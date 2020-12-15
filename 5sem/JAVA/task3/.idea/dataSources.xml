@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="aircrafts" uuid="032a580f-8c99-4e00-b627-53e7334d728b">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:D:\GitHub\JAVA\dataBase\aircrafts.s3db</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="FlightsData" uuid="b1b55649-1b96-4978-9c7b-8a7a59fe9f8b">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:D:\GitHub\JAVA\dataBase\db\FlightsData.s3db</jdbc-url>
+    </data-source>
+  </component>
+</project>
