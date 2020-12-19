@@ -1,16 +1,17 @@
 package com.erage.core.landing;
 
 import javax.swing.text.StyledEditorKit;
+import java.lang.reflect.Field;
 
 public class User {
-    String client;
-    String name;
-    String surname;
-    String email;
-    String password;
-    Boolean emailNotifications;
+    private String client;
+    private String name;
+    private String surname;
+    private String email;
+    private String password;
+    private Boolean emailNotifications;
 
-    public User(){
+    public User() {
         client = "0";
         name = "0";
         surname = "0";
@@ -19,7 +20,7 @@ public class User {
         emailNotifications = false;
     }
 
-    public User(String name, String password){
+    public User(String name, String password) {
         this.name = name;
         this.password = password;
         client = "0";
@@ -33,7 +34,7 @@ public class User {
                 String surname,
                 String email,
                 String password,
-                Boolean emailNotifications){
+                Boolean emailNotifications) {
         this.client = client;
         this.name = name;
         this.surname = surname;
@@ -42,7 +43,7 @@ public class User {
         this.emailNotifications = emailNotifications;
     }
 
-    public User(User user){
+    public User(User user) {
         this(
                 user.getClient(),
                 user.getName(),
@@ -98,6 +99,20 @@ public class User {
 
     public void setEmailNotifications(Boolean emailNotifications) {
         this.emailNotifications = emailNotifications;
+    }
+
+    public String getUserForDB() throws IllegalAccessException {
+        StringBuilder values = new StringBuilder();
+        values.append("('");
+        Field[] fields = this.getClass().getDeclaredFields();
+        for(Field f: fields){
+            values.append(f.get(this));
+            values.append("', '");
+        }
+        values = new StringBuilder(values.substring(0, values.length() - 3));
+        values.append(");");
+
+        return values.toString();
     }
 
 }

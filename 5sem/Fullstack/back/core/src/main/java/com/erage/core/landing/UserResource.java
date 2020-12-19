@@ -1,7 +1,6 @@
 package com.erage.core.landing;
 
-import com.erage.core.course.Course;
-import com.erage.core.course.CoursesHardcodedService;
+import com.erage.core.dataBase.manageDataBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.List;
 
 
@@ -18,15 +19,25 @@ import java.util.List;
 public class UserResource {
 
     @Autowired
-    private UserHardcoded userManagement;
+    private manageDataBase manageDB;
+//    private UserHardcoded userManagement;
+
+//    @PutMapping("/LandingEnterPage")
+//    public String checkPassword(@RequestBody User user) {
+//        return userManagement.tryLogin(user);
+//    }
+//    @PutMapping("/LandingRegistration")
+//    public String registerUser(@RequestBody User user) {
+//        return userManagement.registerUser(user);
+//    }
 
     @PutMapping("/LandingEnterPage")
-    public String checkPassword(@RequestBody User user) {
-        return userManagement.tryLogin(user);
+    public String checkPassword(@RequestBody User user) throws ParseException, SQLException, ClassNotFoundException {
+        return manageDB.tryLogin(user);
     }
     @PutMapping("/LandingRegistration")
-    public String registerUser(@RequestBody User user) {
-        return userManagement.registerUser(user);
+    public String registerUser(@RequestBody User user) throws IllegalAccessException, SQLException, ClassNotFoundException {
+        return manageDB.registerUser(user);
     }
 
 }
