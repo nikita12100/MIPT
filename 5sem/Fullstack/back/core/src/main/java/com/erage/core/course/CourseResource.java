@@ -10,13 +10,18 @@ import java.net.URI;
 import java.util.List;
 
 
-@CrossOrigin(origins = { "http://localhost:3000", "http://localhost:4200" })
+//@CrossOrigin(origins = { "http://localhost:3000", "http://localhost:4200" })
 
-@RestController
+//@RestController
 public class CourseResource {
 
     @Autowired
     private CoursesHardcodedService courseManagementService;
+
+    @GetMapping("/LandingEnterPage")
+    public String getUserPwd() {
+        return "nikita1111111111222222222333";
+    }
 
     @GetMapping("/instructors/{username}/courses")
     public List<Course> getAllCourses(@PathVariable String username) {
