@@ -20,15 +20,13 @@ public class UserResource {
     @Autowired
     private UserHardcoded userManagement;
 
-//    @GetMapping("/LandingEnterPage")
-//    public String getUserPwd() {
-//        return userManagement.getUserPwd("23");
-//    }
-
     @PutMapping("/LandingEnterPage")
     public String checkPassword(@RequestBody User user) {
         return userManagement.tryLogin(user);
     }
-
+    @PutMapping("/LandingRegistration")
+    public String registerUser(@RequestBody User user) {
+        return userManagement.registerUser(user);
+    }
 
 }

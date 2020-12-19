@@ -9,24 +9,34 @@ import java.util.List;
 @Service
 public class UserHardcoded {
 
-    private static User user1 = new User("nikita", "123");
+    private static List<User> users = new ArrayList<>();
 
-    public String getUserPwd(String user){
-        if(user1.getName().equals(user)){
-            return user1.getPassword();
-        }
-        else {
+    UserHardcoded() {
+        users.add(new User("nikita", "123"));
+    }
+
+    public String getUserPwd(String user) {
+        if (users.get(0).getName().equals(user)) {
+            return users.get(0).getPassword();
+        } else {
             return "None";
         }
     }
 
-    public String tryLogin(User user){
-        if(user1.name.equals(user.getName()) && user1.password.equals(user.getPassword())){
-            return "Success";
+    public String tryLogin(User user) {
+        for (User u : users) {
+            if (u.getName().equals(user.getName()) &&
+                    u.getPassword().equals(user.getPassword())) {
+                return "Success";
+            }
         }
-        else {
-            return "Fail";
-        }
+        return "Fail";
+    }
+
+    public String registerUser(User user) {
+        users.add(new User(user));
+
+        return "Success";
     }
 
 }
