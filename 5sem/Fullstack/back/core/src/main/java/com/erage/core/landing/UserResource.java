@@ -31,6 +31,16 @@ public class UserResource {
 //        return userManagement.registerUser(user);
 //    }
 
+    @GetMapping("/")
+    public @ResponseBody String integTestConnection() {
+        return "OK";
+    }
+
+    @RequestMapping("/")
+    public @ResponseBody String unitTestConnection() {
+        return "OK";
+    }
+
     @PutMapping("/LandingEnterPage")
     public String checkPassword(@RequestBody User user) throws ParseException, SQLException, ClassNotFoundException {
         return manageDB.tryLogin(user);
